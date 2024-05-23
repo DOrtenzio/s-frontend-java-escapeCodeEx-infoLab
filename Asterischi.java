@@ -43,11 +43,14 @@ public class Asterischi {
         int x;
         do{
 
-        }while();
+        }while(x<=0 || x>=dim-1);
         return x;
     }
     public static int yPosizione (int dim) {
-       int x;
-       return x; 
+       int y;
+       do{
+
+       }while(y<=0 || y>=dim-1);
+       return y; 
     }
 }
