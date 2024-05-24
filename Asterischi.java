@@ -10,20 +10,30 @@ public class Asterischi {
             dim=in.nextInt();
         }while(dim<0);
         quadrato(dim);
+        //Posizionamento degli asterischi
+        int i=0;
+        while (i<10) {
+            System.out.println(posizione(xPosizione(dim), yPosizione(dim))+"\u001B[3"+((int)(Math.random()*8))+"m*");
+            ritardo();
+            i++;
+        }
     }
     //Funzione per il quadrato
     public static void quadrato(int dim) {
         for(int i=0;i<dim;i++){ //RIghe
+            System.out.print("\t\t");
             for(int p=0;p<dim;p++){ //Colonne
                 if (i==0 || i==dim-1) {
-                    System.out.print("*\t");
-                }else if(p==0 || p==dim-1){
-                    System.out.print("*\t");
+                    System.out.print("* ");
+                }else if(p==0){
+                    System.out.print("*");
+                }else if(p==dim-1){
+                    System.out.print(" *");
                 }else{
-                    System.out.print("\t");
+                    System.out.print("  ");
                 }
             }
-            System.out.println("\n\n");
+            System.out.println("\n");
         }
     }
     // FUnzione per il posizionamento
@@ -32,25 +42,25 @@ public class Asterischi {
     }
     //Funzione per il ritardo
     public static void ritardo() {
-        for (int i = 0; i < 999999999; i++) {
-            for (int j = 0; j < 999999999; j++) {
-                // Non fare nulla
-            }
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println("Errore: " + e);
         }
     }
     //Funzione per numeri casuali dove stampare
     public static int xPosizione (int dim) {
         int x;
         do{
-
-        }while(x<=0 || x>=dim-1);
+           x=((int)(Math.random()*dim)); 
+        }while(x<=0);
         return x;
     }
     public static int yPosizione (int dim) {
-       int y;
+       int y,dom=dim*2;
        do{
-
-       }while(y<=0 || y>=dim-1);
+            y=((int)(Math.random()*dom));
+       }while(y<=4); //Impostazione specifica per esecuzione su VS ignorando così le righe "inquinanti"
        return y; 
     }
 }
